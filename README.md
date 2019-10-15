@@ -37,7 +37,7 @@ Usage of ./versionGetter:
 # Example call
 
 ```bash 
-./versionGetter --source-path ~/projects/kafka
+versionGetter --source-path ~/projects/kafka
 versionGetter 2018/10/15 11:18:20 [INFO] ▶ search in /Users/vianneyfoucault/projects/kafka
 +------------------------------------------------------------------------+----------------+----------+------------------------------------------+---------+
 |                                       FILE                             |     MODULE     |   TYPE   |                  SOURCE                  | VERSION |

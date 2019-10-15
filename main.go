@@ -6,13 +6,13 @@ import (
 	"fmt"
 	"github.com/hashicorp/hcl"
 	"github.com/mbndr/logo"
+	"github.com/olekukonko/tablewriter"
 	. "gopkg.in/src-d/go-git.v4/plumbing/transport"
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"regexp"
-	"github.com/olekukonko/tablewriter"
 	"reflect"
+	"regexp"
 	"sync"
 	"time"
 )
@@ -34,7 +34,7 @@ func (i *arrayFlags) Set(value string) error {
 	return nil
 }
 
-type ListFileData struct  {
+type ListFileData struct {
 	Data []FileData
 }
 type Module struct {
@@ -87,11 +87,11 @@ func parsePayload(paylaod []byte) (FileContents, error) {
 }
 
 type Config struct {
-	SrcPath string
-	Verbose bool
-	Stats   bool
+	SrcPath   string
+	Verbose   bool
+	Stats     bool
 	ExtraSkip arrayFlags
-	Output  string
+	Output    string
 }
 
 func parseSrc(source string) *Endpoint {
@@ -156,7 +156,6 @@ func processFile(path string) (FileData, error) {
 					thisMod.Path = thisMod.gitInfo.SubPath
 					thisMod.Source = thisMod.gitInfo.Repository
 
-
 				case "file":
 					if thisMod.Version != "" {
 						thisMod.Type = "registry"
@@ -173,10 +172,10 @@ func processFile(path string) (FileData, error) {
 
 type Stats struct {
 	StartTime time.Time
-	EndTime time.Time
-	Files   int
-	Modules int
-	Duration time.Duration
+	EndTime   time.Time
+	Files     int
+	Modules   int
+	Duration  time.Duration
 }
 
 func (s *Stats) Stop() {
@@ -290,7 +289,6 @@ func (ld *ListFileData) TableWriter() {
 func (ld *ListFileData) Header() []string {
 	return []string{"File", "Module", "Type", "Source", "Version"}
 }
-
 
 func (ld *ListFileData) PrepareTabulare() [][]string {
 	var output [][]string
